@@ -10,3 +10,30 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+// GET routes
+app.get("/api/notes", (req, res) => {
+  res.json(notesDb);
+});
+
+// Get notes.html file
+app.get("/notes", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/notes.html"));
+});
+
+// POST routes adds notes to json file
+app.post("/api/notes", (req, res) => {
+  let saveNote = req.body;
+  notesDb.push(saveNote);
+
+  let number = 1;
+  notesDb.forEach((note) => {
+    note.id = number;
+    number++;
+    return notesDb;
+  });
+  console.log(notesDb);
+  // Writes to database
+  writeToDataBase(notesDb);
+  res.json(saveNote);
+});
