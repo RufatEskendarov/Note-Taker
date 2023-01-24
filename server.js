@@ -37,3 +37,22 @@ app.post("/api/notes", (req, res) => {
   writeToDataBase(notesDb);
   res.json(saveNote);
 });
+
+
+
+
+
+fs.writeFileSync(jsonFilePath, JSON.stringify(notesDb), function (err) {
+  if (err) {
+    return console.log(err);
+  } else {
+    console.log("HOO-RAY, YOUR NOTE WAS DELETED!");
+  }
+});
+res.json(notesDb);
+});
+
+// Get index.html file. Because of the Asterisk, this Get function must come last.
+app.get("*", (req, res) => {
+res.sendFile(path.join(__dirname, "./public/index.html"));
+});
