@@ -56,3 +56,21 @@ res.json(notesDb);
 app.get("*", (req, res) => {
 res.sendFile(path.join(__dirname, "./public/index.html"));
 });
+
+
+// Run the server
+app.listen(PORT, () => {
+  console.log(`API SERVER NOW ON ${PORT}!`);
+});
+
+// Write to database function
+const writeToDataBase = (notesDb) => {
+  notesDb = JSON.stringify(notesDb);
+  fs.writeFile("./db/db.json", notesDb, (error) => {
+    if (error) {
+      return console.log(error);
+    } else {
+      console.log("NOTES ADDED!");
+    }
+  });
+};
