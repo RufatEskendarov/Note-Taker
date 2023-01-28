@@ -67,7 +67,9 @@ app.get("*", (req, res) => {
 
 // Run the server
 app.listen(PORT, () => {
-  console.log(`API SERVER NOW ON ${PORT}!`);
+  console.log(
+    `API SERVER NOW ON ${PORT}! Alt + click on link http://localhost:${PORT}/ `
+  );
 });
 
 // Write to database function
