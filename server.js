@@ -40,7 +40,6 @@ app.post("/api/notes", (req, res) => {
 
 // Delete a selected note
 app.delete("/api/notes/:id", (req, res) => {
-  console.log("Note was deleted!");
   let jsonFilePath = path.join(__dirname, "./Develop/db/db.json");
   // request to delete note by id.
   for (let i = 0; i < notesDb.length; i++) {
@@ -54,7 +53,7 @@ app.delete("/api/notes/:id", (req, res) => {
     if (err) {
       return console.log(err);
     } else {
-      console.log("HOO-RAY, YOUR NOTE WAS DELETED!");
+      console.log("Your NOTE was DELETED!");
     }
   });
   res.json(notesDb);
@@ -68,7 +67,7 @@ app.get("*", (req, res) => {
 // Run the server
 app.listen(PORT, () => {
   console.log(
-    `API SERVER NOW ON ${PORT}! Alt + click on link http://localhost:${PORT}/ `
+    `Your API server now on PORT:${PORT}! Alt + click on link http://localhost:${PORT}/ `
   );
 });
 
@@ -79,7 +78,7 @@ const writeToDataBase = (notesDb) => {
     if (error) {
       return console.log(error);
     } else {
-      console.log("NOTES ADDED!");
+      console.log("New NOTE was ADDED!");
     }
   });
 };
